@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp">
+
+    <ImageButton
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/back_button"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/back_button"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="예약 내용"
+        android:textSize="30dp"
+        android:layout_marginLeft="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/border_layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:text="캠핑장 이름: 상명캠핑장\n캠핑장 위치: 서울특별시 종로구 홍지동 홍지문2길 20\n예약 일자 : 010-****-****\n전화번호:010-xxxx-xxxx\n 예약 요청 사항 : ~~~~"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="변경 종류\n예약 내용 변경\n변경사유\n~~~~"
+        android:textSize="15dp"
+        android:padding="40dp"
+        android:textColor="@color/black"/>
+
+
+</LinearLayout>
