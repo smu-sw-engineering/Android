@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SWengineering">
 
-        <activity android:name=".owner.ownBookDetail">
+        <activity android:name=".customer.cusCampDetail">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
