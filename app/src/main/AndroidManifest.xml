@@ -12,7 +12,7 @@
         <activity android:name=".user.UserFindIdPassword"></activity>
         <activity android:name=".user.UserCreateUser" />
         <activity android:name=".user.UserLoginScreen" />
-        <activity android:name=".user.UserSecurityScreen" />
+        <activity android:name=".user.UserSecurity" />
         <activity android:name=".common.ComWithdrawal" />
         <activity android:name=".common.ComInfoApp" />
         <activity android:name=".common.ComMessageDetails" />

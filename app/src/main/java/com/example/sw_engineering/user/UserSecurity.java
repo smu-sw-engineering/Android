@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.sw_engineering.R;
 
-public class UserLoginScreen extends AppCompatActivity {
+public class UserSecurity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_login_screen);
+        setContentView(R.layout.activity_user_security);
     }
 }
