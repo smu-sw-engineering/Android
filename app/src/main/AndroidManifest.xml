@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SWengineering">
-        <activity android:name=".common.ComWithdrawal"></activity>
+        <activity android:name=".user.UserFindIdPassword"></activity>
+        <activity android:name=".user.UserCreateUser" />
+        <activity android:name=".user.UserLoginScreen" />
+        <activity android:name=".user.UserSecurityScreen" />
+        <activity android:name=".common.ComWithdrawal" />
         <activity android:name=".common.ComInfoApp" />
         <activity android:name=".common.ComMessageDetails" />
         <activity android:name=".common.ComMessageRoomList" />
