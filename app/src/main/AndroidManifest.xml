@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SWengineering">
-
+        <activity android:name=".common.ComWithdrawal"></activity>
+        <activity android:name=".common.ComInfoApp" />
+        <activity android:name=".common.ComMessageDetails" />
+        <activity android:name=".common.ComMessageRoomList" />
+        <activity android:name=".common.ComUserInfoMod" />
+        <activity android:name=".common.ComSetting" />
         <activity android:name=".customer.cusBookCamp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
