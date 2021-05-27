@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="CheckList">
+        <item>자신의 이름은?</item>
+        <item>자신이 좋아하는 색은?</item>
+        <item>부모님의 성함은?</item>
+    </string-array>
+</resources>

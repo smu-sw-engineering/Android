@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">SW-engineering</string>
+    <string name="app_name">SW-engineering</string>
+    <string name="createLogin">로그인</string>
+    <string name="createFindId_or_Password">아이디/비밀번호 찾기</string>
+    <string name="createCreate">회원가입</string>
+    <string name="loginIdField">사용자 아이디</string>
+    <string name="loginPasswordField">비밀번호</string>
+    <string name="createId">아이디</string>
+    <string name="createIdFiled">영문, 숫자 혼합가능</string>
+    <string name="createPassword">비밀번호</string>
+    <string name="createPasswordField">영문, 숫자, 특수문자 포함 10자 이상</string>
+    <string name="createName">이름</string>
+    <string name="createNameField">사용자 이름</string>
+    <string name="createNickName">닉네임</string>
+    <string name="createNickNameField">한글, 영어, 숫자 혼합가능</string>
+    <string name="createTelephone">전화번호</string>
+    <string name="createTelephoneField">010-XXXX-XXXX</string>
+    <string name="createUserChecker">사용자 인증 질문</string>
+    <string name="createUserCheckerField">인증 해답</string>
+    <string name="createSecurity">개인정보 이용약관</string>
+    <string name="createSecurityB">더보기</string>
+    <string name="createSecurityDetail">약관을 읽었고 개인정보 처리방침에 동의합니다.</string>
+    <string name="createOwnerCheck">캠핑장 주인인가요?</string>
+    <string name="createOwnerCheckDetail">캠핑장 주인</string>
+    <string name="createB">생성</string>
+
 </resources>

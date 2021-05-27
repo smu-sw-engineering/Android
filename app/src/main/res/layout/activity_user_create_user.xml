@@ -1,9 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.UserCreateUser">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/createId"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="@string/createId"
+            app:layout_constraintBottom_toTopOf="@+id/createIdField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.409" />
+
+        <EditText
+            android:id="@+id/createIdField"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/createNameField"
+            app:layout_constraintBottom_toTopOf="@+id/createPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createId"
+            android:importantForAutofill="no"
+            tools:targetApi="o"/>
+
+        <TextView
+            android:id="@+id/createPassword"
+            app:layout_constraintBottom_toTopOf="@+id/createPasswordField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createIdField"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:text="@string/createPassword" />
+
+        <EditText
+            android:id="@+id/createPasswordField"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/createPasswordField"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/createName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createPassword"
+            tools:targetApi="o" />
+
+        <TextView
+            android:id="@+id/createName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/createName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createPasswordField" />
+
+        <EditText
+            android:id="@+id/createNameField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/createNameField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createName"
+            android:importantForAutofill="no"
+            tools:targetApi="o"/>
+
+        <TextView
+            android:id="@+id/createNickName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createNameField"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/createNickName" />
+
+        <EditText
+            android:id="@+id/createNIckNameField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/createNickNameField"
+            app:layout_constraintBottom_toTopOf="@+id/createTelephone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createNickName"
+            android:importantForAutofill="no"
+            tools:targetApi="o"/>
+
+        <TextView
+            android:id="@+id/createTelephone"
+            app:layout_constraintBottom_toTopOf="@+id/createTelephoneField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createNIckNameField"
+            android:layout_width="143dp"
+            android:layout_height="wrap_content"
+            android:text="@string/createTelephone" />
+
+        <EditText
+            android:id="@+id/createTelephoneField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/createTelephoneField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createTelephone"
+            android:importantForAutofill="no"
+            tools:targetApi="o"/>
+
+        <TextView
+            android:id="@+id/createUserChecker"
+            app:layout_constraintBottom_toTopOf="@+id/spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createTelephoneField"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:text="@string/createUserChecker" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            app:layout_constraintBottom_toTopOf="@+id/createUserCheckerField"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createUserChecker"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/CheckList" />
+
+        <EditText
+            android:id="@+id/createUserCheckerField"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/createUserCheckerField"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/createSecurity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            tools:targetApi="o" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="10"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/createSecurity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/createSecurity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_weight="3"
+                app:layout_constraintTop_toBottomOf="@+id/createUserCheckerField" />
+
+            <Button
+                android:id="@+id/createSecurityB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:text="@string/createSecurityB" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/createSecurityDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/createSecurityDetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/createSecurity" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="310dp"
+                tools:layout_editor_absoluteY="622dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/createOwnerCheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/createOwnerCheck" />
+
+        <CheckBox
+            android:id="@+id/createOwnerDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/createOwnerCheckDetail" />
+
+        <Button
+            android:id="@+id/createUserB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/createB" />
+
+
+    </LinearLayout>
+</ScrollView>
