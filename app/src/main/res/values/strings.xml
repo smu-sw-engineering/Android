@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">SW-engineering</string>
-    <string name="app_name">SW-engineering</string>
     <string name="createLogin">로그인</string>
     <string name="createFindId_or_Password">아이디/비밀번호 찾기</string>
     <string name="createCreate">회원가입</string>
@@ -24,5 +23,17 @@
     <string name="createOwnerCheck">캠핑장 주인인가요?</string>
     <string name="createOwnerCheckDetail">캠핑장 주인</string>
     <string name="createB">생성</string>
+    <string name="findId">아이디 찾기</string>
+    <string name="findIdName">이름</string>
+    <string name="findIdNameField">이름을 입력하세요</string>
+    <string name="findIdTelephone">전화번호</string>
+    <string name="findIdTelephoneField">010-XXXX-XXXX</string>
+    <string name="findSearchB">검색</string>
+    <string name="findPasswordSection">비밀번호 찾기</string>
+    <string name="findPasswordId">아이디</string>
+    <string name="findPasswordIdField">사용자의 아이드를 입력하세요</string>
+    <string name="findPasswordUserChecker">사용자 인증질문</string>
+    <string name="findPasswordUserCheckerField">질문의 정답</string>
+
 
 </resources>
