@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "761728641676",
+    "project_id": "sw-camp",
+    "storage_bucket": "sw-camp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761728641676:android:e64ecb3c09b34382f6a9a9",
+        "android_client_info": {
+          "package_name": "com.example.sw_engineering"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761728641676-mk7advee752f0lmrpmeeu4ppmm3b65pm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1nveg1epZHWLjHyKb-a0YP06uhFh_a-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761728641676-mk7advee752f0lmrpmeeu4ppmm3b65pm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
