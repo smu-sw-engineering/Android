@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.sw_engineering">
 
     <application
@@ -9,16 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SWengineering">
-        <activity android:name=".user.UserFindIdPassword"></activity>
-        <activity android:name=".user.UserCreateUser" />
-        <activity android:name=".user.UserSecurity" />
+        <activity android:name=".user.UserFindIdPassword" />
         <activity android:name=".common.ComWithdrawal" />
         <activity android:name=".common.ComInfoApp" />
         <activity android:name=".common.ComMessageDetails" />
         <activity android:name=".common.ComMessageRoomList" />
         <activity android:name=".common.ComUserInfoMod" />
         <activity android:name=".common.ComSetting" />
-        <activity android:name=".customer.cusBookCamp">
+        <activity android:name=".user.UserCreateUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
