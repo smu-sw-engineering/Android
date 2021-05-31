@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+//회원가입
 public class UserLogin extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private static final String TAG ="LoginActivity";
