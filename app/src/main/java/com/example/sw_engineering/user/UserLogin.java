@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.sw_engineering.R;
 import com.example.sw_engineering.customer.cusHome;
+import com.example.sw_engineering.owner.ownHome;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -89,9 +90,12 @@ public class UserLogin extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                     DocumentSnapshot document = task.getResult();
                                     owner = document.getBoolean("owner");
-                                    if(owner)
-                                        startToast("주인입니다.");
-                                    else startToast("고객입니다.");
+                                    if(owner) {
+                                        //주인 홈창으로 넘어감
+                                        intentOwn();
+                                    }
+
+                                    else intentCustomer();//고객 홈창으로 넘어감
                                 }
                             });
 
@@ -108,6 +112,16 @@ public class UserLogin extends AppCompatActivity {
     }
     private void startToast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+    }
+
+    public void intentCustomer(){
+        Intent intent = new Intent(UserLogin.this, cusHome.class);
+        startActivity(intent);
+    }
+
+    public void intentOwn(){
+        Intent intent = new Intent(UserLogin.this, ownHome.class);
+        startActivity(intent);
     }
     private void startSignUpActivity(){
         Intent intent = new Intent(this, UserCreateUser.class);

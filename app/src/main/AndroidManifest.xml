@@ -27,7 +27,8 @@
         <activity android:name=".owner.ownCampEdit"/>
         <activity android:name=".owner.ownCreateCamping"/>
         <activity android:name=".owner.ownHome"/>
-        <activity android:name=".user.UserCreateUser">
+        <activity android:name=".user.UserCreateUser"/>
+        <activity android:name=".user.UserLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
