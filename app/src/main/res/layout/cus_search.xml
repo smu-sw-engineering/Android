@@ -27,12 +27,12 @@
                 android:orientation="vertical"
                 android:layout_margin="30dp"
                 android:layout_weight="1">
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="내용을 입력해주세요"
                     android:padding="12dp">
-                </TextView>
+                </EditText>
             </LinearLayout>
             <ImageButton
                 android:layout_width="match_parent"
@@ -74,74 +74,79 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/search"></Spinner>
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="0dp"
-                    android:orientation="vertical"
-                    android:padding="0dp">
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="0dp"
-                        android:padding="0dp"
-                        android:layout_marginTop="30dp"
-                        android:text="서울" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="경기" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="인천" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="강원" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="충청" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="경상" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="전라" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="제주" />
-                </LinearLayout>
+                android:layout_height="match_parent">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/border_layout"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="48dp">
-                    <ListView
+                    android:orientation="horizontal">
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_margin="0dp"
+                        android:orientation="vertical"
+                        android:padding="0dp">
 
-                    </ListView>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:padding="0dp"
+                            android:layout_marginTop="30dp"
+                            android:text="서울" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="경기" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="인천" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="강원" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="충청" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="경상" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="전라" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="제주" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border_layout"
+                        android:orientation="vertical">
+                        <ListView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                        </ListView>
+                    </LinearLayout>
+
                 </LinearLayout>
+            </ScrollView>
 
-            </LinearLayout>
+
 
 
         </LinearLayout>
@@ -159,6 +164,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
+            android:id="@+id/home1"
             android:src="@drawable/home"/>
         <ImageButton
             android:layout_width="match_parent"
@@ -166,6 +172,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/menu"
+            android:id="@+id/menu"
             android:layout_weight="1"
             />
         <ImageButton
@@ -174,6 +181,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/reserve"
+            android:id="@+id/reserve"
             android:layout_weight="1"
             />
         <ImageButton
@@ -182,6 +190,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/messenger"
+            android:id="@+id/chatting"
             android:layout_weight="1"
             />
         <ImageButton
@@ -190,6 +199,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
+            android:id="@+id/setting"
             android:src="@drawable/settings"
             />
     </LinearLayout>

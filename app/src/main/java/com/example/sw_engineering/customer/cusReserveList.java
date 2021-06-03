@@ -14,24 +14,24 @@ import com.example.sw_engineering.common.ComMessageDetails;
 import com.example.sw_engineering.common.ComMessageRoomList;
 import com.example.sw_engineering.common.ComSetting;
 
-public class cusSearch extends AppCompatActivity {
+public class cusReserveList extends AppCompatActivity {
 
-    ImageButton home1, menu, reserve, chatting, setting;
+    ImageButton home, menu, reserve, chatting, setting;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cus_search);
+        setContentView(R.layout.cus_reservation_list);
         navbar();
     }
 
     public void navbar() {
-        home1 = findViewById(R.id.home1);
+        home = findViewById(R.id.home);
         menu = findViewById(R.id.menu);
         reserve = findViewById(R.id.reserve);
         chatting = findViewById(R.id.chatting);
         setting = findViewById(R.id.setting);
 
-        home1.setOnClickListener(new View.OnClickListener(){
+        home.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), cusHome.class);
@@ -39,10 +39,10 @@ public class cusSearch extends AppCompatActivity {
             }
         });
 
-        reserve.setOnClickListener(new View.OnClickListener(){
+        menu.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), cusReserveList.class);
+                Intent intent = new Intent(getApplicationContext(), cusSearch.class);
                 startActivity(intent);
             }
         });

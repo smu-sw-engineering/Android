@@ -17,8 +17,17 @@
         <activity android:name=".common.ComMessageRoomList" />
         <activity android:name=".common.ComUserInfoMod" />
         <activity android:name=".common.ComSetting" />
-        <activity android:name=".user.UserCreateUser"/>
-        <activity android:name=".user.UserLogin">
+        <activity android:name=".customer.cusReserveList"/>
+        <activity android:name=".customer.cusHome"/>
+        <activity android:name=".customer.cusSearch"/>
+        <activity android:name=".customer.cusCampDetail"/>
+        <activity android:name=".customer.cusBookCamp"/>
+        <activity android:name=".owner.ownBookDetail"/>
+        <activity android:name=".owner.ownBookManage"/>
+        <activity android:name=".owner.ownCampEdit"/>
+        <activity android:name=".owner.ownCreateCamping"/>
+        <activity android:name=".owner.ownHome"/>
+        <activity android:name=".user.UserCreateUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
