@@ -11,19 +11,31 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="상명대학교 소프트웨어공학 프로젝트입니다."
+        android:text="안윤호"
         android:layout_gravity="center"
         android:gravity="center"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="캠핑장 예약관리 앱"
+        android:text="박채희"
         android:layout_gravity="center"
         android:gravity="center"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="v0.0.0"
+        android:text="안선정"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="임혜지"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="정경재"
         android:layout_gravity="center"
         android:gravity="center"/>
 

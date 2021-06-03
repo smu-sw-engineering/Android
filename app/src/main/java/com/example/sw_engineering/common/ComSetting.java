@@ -27,8 +27,12 @@ public class ComSetting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_com_setting);
         username = findViewById(R.id.username);
+
         findViewById(R.id.logout).setOnClickListener(onClickListener);
         findViewById(R.id.btn_info_mod).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_withdrawal).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_info_app).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_info_developer).setOnClickListener(onClickListener);
     }
     @Override
     public void onStart() {
@@ -60,7 +64,10 @@ public class ComSetting extends AppCompatActivity {
                     break;
                 case R.id.btn_info_mod:
                     startComUserInfoMod();
-
+                case R.id.btn_info_app:
+                    startComInfoApp();
+                case R.id.btn_info_developer:
+                    startComInfoDeveloper();
             }
         }
     };
@@ -70,15 +77,25 @@ public class ComSetting extends AppCompatActivity {
             startToast("로그아웃 했습니다.");
         }
     }
+
     private void startToast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
+
     private void startLoginActivity() {
         Intent intent = new Intent(this, UserLogin.class);
         startActivity(intent);
     }
     private void startComUserInfoMod() {
         Intent intent = new Intent(this, ComUserInfoMod.class);
+        startActivity(intent);
+    }
+    private void startComInfoApp(){
+        Intent intent = new Intent(this, ComInfoApp.class);
+        startActivity(intent);
+    }
+    private void startComInfoDeveloper(){
+        Intent intent = new Intent(this, ComInfoDeveloper.class);
         startActivity(intent);
     }
 }

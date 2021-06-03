@@ -45,7 +45,9 @@
                 android:layout_height="50dp"
                 android:text="정보수정"
                 android:id="@+id/btn_info_mod"/>
+
             <Button
+                android:id="@+id/btn_withdrawal"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="회원탈퇴" />
@@ -71,10 +73,13 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/btn_info_app"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="어플정보"/>
+                android:text="어플정보" />
+
             <Button
+                android:id="@+id/btn_info_developer"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="개발자정보" />
