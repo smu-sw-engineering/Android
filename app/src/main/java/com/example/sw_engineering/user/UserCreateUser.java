@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -51,11 +52,12 @@ public class UserCreateUser extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.createUserB:
                     Intent intent_login = new Intent(UserCreateUser.this, UserLogin.class);
-                    boolean loginSuccess = signUp(); // 회원가입 함수 실행
+                    signUp();
+                    //boolean loginSuccess = signUp(); // 회원가입 함수 실행
                     //가입조건이 충족됐을 때 프로필 수정 화면으로 넘어가는 조건이 되어야함
-                    if(loginSuccess == true)
-                        startLoginActivity();
-                    break;
+                    //if(loginSuccess == true)
+                        //startLoginActivity();
+                    //break;
                 //case R.id.login_button1:
                     //startLoginActivity(); // 로그인 창으로 간다
                     //break;
@@ -69,13 +71,14 @@ public class UserCreateUser extends AppCompatActivity {
         // 이메일, 패스워드, 패스워드 확인 값을 받음
         String email = ((EditText) findViewById(R.id.createIdField)).getText().toString();
         String password = ((EditText) findViewById(R.id.createPasswordField)).getText().toString();
-        String name = ((EditText) findViewById(R.id.createNameField)).getText().toString();
+        String name = ((EditText) findViewById(R.id.CreateNameField)).getText().toString();
         String username = ((EditText) findViewById(R.id.createNIckNameField)).getText().toString();
         String tel = ((EditText) findViewById(R.id.createTelephoneField)).getText().toString();
         String confirm = ((EditText) findViewById(R.id.createUserCheckerField)).getText().toString();
-
+        CheckBox owner = (CheckBox) findViewById(R.id.createOwnerDetail);
+        //startToast(name);
         if (email.contains("@") && email.contains(".")) { // 아이디가 이메일 형식인지 확인
-            if (password.length() >= 6 && name.length()>=1 && username.length()>=1 && tel.length()>=1 && confirm.length()>=1) { // 비밀번호가 여섯자리 이상인지 확인
+            if (password.length() >= 6 && name.length()>=1 && username.length()>=1 && tel.length() >= 1 && confirm.length() >= 1) { // 비밀번호가 여섯자리 이상인지 확인
                 mAuth.createUserWithEmailAndPassword(email, password) // 변수 email과 password의 저장된 값을 전송 (mAuth는 Firebase 객체)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -83,17 +86,11 @@ public class UserCreateUser extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success");
+                                    if(owner.isChecked())
+                                        infoInit("1", email, name, password, tel,username, confirm); //캠핑장 주인 : 1
+                                    else infoInit("0", email, name, password, tel, username, confirm); //캠핑장 고객: 0
                                     FirebaseUser user = mAuth.getCurrentUser(); // 로그인 성공
-                                    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                    Map<String, String> user_info = new HashMap<>();
-                                    user_info.put("password", password);
-                                    user_info.put("name", name);
-                                    user_info.put("username", username);
-                                    user_info.put("tell",tel);
-                                    user_info.put("confirm", confirm);
-                                    db.collection("UserInfo").document(user.getUid())
-                                            .set(user_info, SetOptions.merge());
+
 
                                 } else {
                                     // If sign in fails, display a message to the user.
@@ -123,4 +120,29 @@ public class UserCreateUser extends AppCompatActivity {
         Intent intent = new Intent(this, UserLogin.class);
         startActivity(intent);
     }
+    private void infoInit(String owner, String email, String name, String pw, String tel, String username, String confirm){
+          FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+          FirebaseFirestore db = FirebaseFirestore.getInstance();
+          Map<String, String> user_info = new HashMap<>();
+          user_info.put("owner", owner); //주인인지 아닌지 구분
+          user_info.put("password", pw);
+          user_info.put("name", name);
+          user_info.put("username", username);
+          user_info.put("tel",tel);
+          user_info.put("confirm", confirm);
+          user_info.put("email", email);
+          FirebaseUser userId = mAuth.getCurrentUser();
+          db.collection("UserInfo").document(user.getUid())
+                  .set(user_info, SetOptions.merge());
+          //예약하고 좋아요, 캠핑장 만들기, 전체 캠핑장 조회는 다음과 같은 구조로 넣는다.
+          /*if(owner =="0") { //캠핑장 고객 유저일때 좋아요 목록과 예약 목록 카테고리에 정보를 넣는다.
+              db.collection("Camp").document("Like").collection(user.getUid()).document("캠핑장 id");
+              db.collection("Camp").document("Book").collection(user.getUid()).document("캠핑장 id");
+          }
+          else{ //캠핑장 주인 유저일때 만든 자신의 캠프 목록 카테고리를 만든다.
+              db.collection("Camp").document("My").collection(user.getUid()).document("캠핑장 id");
+          }*/
+
+    }
+
 }
