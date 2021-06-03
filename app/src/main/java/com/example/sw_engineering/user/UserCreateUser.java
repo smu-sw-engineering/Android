@@ -56,9 +56,9 @@ public class UserCreateUser extends AppCompatActivity {
                     //boolean loginSuccess = signUp(); // 회원가입 함수 실행
                     //가입조건이 충족됐을 때 프로필 수정 화면으로 넘어가는 조건이 되어야함
                     //if(loginSuccess == true)
-                        //startLoginActivity();
+                    //startLoginActivity();
                     //break;
-                //case R.id.login_button1:
+                    //case R.id.login_button1:
                     //startLoginActivity(); // 로그인 창으로 간다
                     //break;
 
@@ -87,9 +87,10 @@ public class UserCreateUser extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success");
                                     if(owner.isChecked())
-                                        infoInit("1", email, name, password, tel,username, confirm); //캠핑장 주인 : 1
-                                    else infoInit("0", email, name, password, tel, username, confirm); //캠핑장 고객: 0
+                                        infoInit(true, email, name, password, tel,username, confirm); //캠핑장 주인 : 1
+                                    else infoInit(false, email, name, password, tel, username, confirm); //캠핑장 고객: 0
                                     FirebaseUser user = mAuth.getCurrentUser(); // 로그인 성공
+                                    startLoginActivity();
 
 
                                 } else {
@@ -120,21 +121,21 @@ public class UserCreateUser extends AppCompatActivity {
         Intent intent = new Intent(this, UserLogin.class);
         startActivity(intent);
     }
-    private void infoInit(String owner, String email, String name, String pw, String tel, String username, String confirm){
-          FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-          FirebaseFirestore db = FirebaseFirestore.getInstance();
-          Map<String, String> user_info = new HashMap<>();
-          user_info.put("owner", owner); //주인인지 아닌지 구분
-          user_info.put("password", pw);
-          user_info.put("name", name);
-          user_info.put("username", username);
-          user_info.put("tel",tel);
-          user_info.put("confirm", confirm);
-          user_info.put("email", email);
-          FirebaseUser userId = mAuth.getCurrentUser();
-          db.collection("UserInfo").document(user.getUid())
-                  .set(user_info, SetOptions.merge());
-          //예약하고 좋아요, 캠핑장 만들기, 전체 캠핑장 조회는 다음과 같은 구조로 넣는다.
+    private void infoInit(Boolean owner, String email, String name, String pw, String tel, String username, String confirm){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> user_info = new HashMap<>();
+        user_info.put("owner", owner); //주인인지 아닌지 구분
+        user_info.put("password", pw);
+        user_info.put("name", name);
+        user_info.put("username", username);
+        user_info.put("tel",tel);
+        user_info.put("confirm", confirm);
+        user_info.put("email", email);
+        FirebaseUser userId = mAuth.getCurrentUser();
+        db.collection("UserInfo").document(user.getUid())
+                .set(user_info, SetOptions.merge());
+        //예약하고 좋아요, 캠핑장 만들기, 전체 캠핑장 조회는 다음과 같은 구조로 넣는다.
           /*if(owner =="0") { //캠핑장 고객 유저일때 좋아요 목록과 예약 목록 카테고리에 정보를 넣는다.
               db.collection("Camp").document("Like").collection(user.getUid()).document("캠핑장 id");
               db.collection("Camp").document("Book").collection(user.getUid()).document("캠핑장 id");

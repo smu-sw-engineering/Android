@@ -18,11 +18,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 //회원가입
 public class UserLogin extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private static final String TAG ="LoginActivity";
+    Boolean owner;
 
 
     @Override
@@ -61,6 +71,7 @@ public class UserLogin extends AppCompatActivity {
     public void Login(){
         String email = ((EditText)findViewById(R.id.idlogin)).getText().toString();
         String password = ((EditText)findViewById(R.id.passwordlogin)).getText().toString();
+        //items = new ArrayList<Map>();
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -71,8 +82,19 @@ public class UserLogin extends AppCompatActivity {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             startToast("로그인 성공");//로그인 성공 시 홈으로 이동
-                            Intent intent = new Intent(UserLogin.this, cusHome.class);
-                            startActivity(intent);
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            DocumentReference docRef = db.collection("UserInfo").document(user.getUid());
+                            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    DocumentSnapshot document = task.getResult();
+                                    owner = document.getBoolean("owner");
+                                    if(owner)
+                                        startToast("주인입니다.");
+                                    else startToast("고객입니다.");
+                                }
+                            });
+
 
                         } else {
                             // If sign in fails, display a message to the user.

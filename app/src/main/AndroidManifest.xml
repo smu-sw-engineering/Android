@@ -17,7 +17,8 @@
         <activity android:name=".common.ComMessageRoomList" />
         <activity android:name=".common.ComUserInfoMod" />
         <activity android:name=".common.ComSetting" />
-        <activity android:name=".user.UserCreateUser">
+        <activity android:name=".user.UserCreateUser"/>
+        <activity android:name=".user.UserLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
