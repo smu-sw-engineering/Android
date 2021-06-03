@@ -82,4 +82,9 @@
         <item>@layout/book_entries</item>
         <item>@layout/book_entries</item>
     </string-array>
+
+    <string-array name="search">
+        <item>인기순</item>
+        <item>조회순</item>
+    </string-array>
 </resources>

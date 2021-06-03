@@ -80,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10"
-        android:weightSum=""
+        android:weightSum="5"
         android:orientation="horizontal">
         <ImageButton
             android:layout_width="match_parent"
