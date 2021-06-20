@@ -75,7 +75,7 @@ public class ownHome extends AppCompatActivity {
                                     String name = document.getString("name");
                                     //여기다 지역정보랑 얻어오면 됨
                                     startToast(name);
-                                    adapter.addItem(name, "서울시", tel);
+                                    adapter.addItem(name, "서울시", tel, campid);
                                     adapter.notifyDataSetChanged();
                                 }
                             });

@@ -60,11 +60,12 @@ public class ownHomeListViewAdapter extends BaseAdapter {
         return listViewItemList.get(position);
     }
 
-    public void addItem(String name, String location, String phone) {
+    public void addItem(String name, String location, String phone, String campId) {
         ownHomeListViewItem item = new ownHomeListViewItem();
         item.setName(name);
         item.setLocation(location);
         item.setPhone(phone);
+        item.setCamp(campId);
 
         listViewItemList.add(item);
     }
