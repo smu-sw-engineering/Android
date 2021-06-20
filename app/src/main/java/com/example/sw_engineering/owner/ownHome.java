@@ -1,5 +1,6 @@
 package com.example.sw_engineering.owner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.Image;
@@ -13,14 +14,29 @@ import android.widget.Toast;
 
 import com.example.sw_engineering.R;
 import com.example.sw_engineering.common.ComSetting;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ownHome extends AppCompatActivity {
     private Button update_button, plus_button;
     private FirebaseAuth mAuth;
     private ListView listview;
     private ownHomeListViewAdapter adapter;
+    ArrayList items;
+    String tel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +48,44 @@ public class ownHome extends AppCompatActivity {
         findViewById(R.id.plus_btn).setOnClickListener(onClickListener);
         listview.setAdapter(adapter);
 
-        adapter.addItem("상명캠핑장", "서울시", "010-****");
-        adapter.addItem("상명캠핑장1", "서울시", "010-****-****");
-        adapter.notifyDataSetChanged();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //user의 정보를 사용할것임
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("UserInfo").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                tel = document.getString("tel");
+            }
+        });
+
+        db.collection("Camp").document(user.getUid()).collection("privateCamp")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            String campid = document.getId();
+                            //startToast(campid);
+                            DocumentReference docRef = db.collection("Camp").document(user.getUid()).collection("privateCamp").document(campid);
+
+                            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    DocumentSnapshot document = task.getResult();
+                                    String name = document.getString("name");
+                                    //여기다 지역정보랑 얻어오면 됨
+                                    startToast(name);
+                                    adapter.addItem(name, "서울시", tel);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+
+                        }
+                    }
+                });
+
+
+
     }
     @Override
     public void onStart() {
@@ -78,4 +129,6 @@ public class ownHome extends AppCompatActivity {
         Intent intent = new Intent(ownHome.this, ownCreateCamping.class);
         startActivity(intent);
     }
+
+
 }
