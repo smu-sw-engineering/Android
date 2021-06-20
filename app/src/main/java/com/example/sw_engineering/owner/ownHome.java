@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
@@ -24,10 +25,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.example.sw_engineering.customer.cusCampDetail;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class ownHome extends AppCompatActivity {
     private Button update_button, plus_button;
@@ -83,6 +86,17 @@ public class ownHome extends AppCompatActivity {
                         }
                     }
                 });
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Map<String, String>selection = (Map<String, String>) parent.getItemAtPosition(position);
+                String campid = selection.get("camp");
+                Intent oIntent = new Intent(ownHome.this, cusCampDetail.class);
+                oIntent.putExtra("camp",campid);
+                //추가 넘겨줄 것은 여기아래다 추가해주면 됨
+                startActivity(oIntent);
+            }
+        });
 
 
 
@@ -129,6 +143,7 @@ public class ownHome extends AppCompatActivity {
         Intent intent = new Intent(ownHome.this, ownCreateCamping.class);
         startActivity(intent);
     }
+
 
 
 }
