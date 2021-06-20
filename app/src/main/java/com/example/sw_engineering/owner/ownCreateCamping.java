@@ -1,5 +1,6 @@
 package com.example.sw_engineering.owner;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,7 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.sw_engineering.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 public class ownCreateCamping extends AppCompatActivity {
@@ -24,6 +31,10 @@ public class ownCreateCamping extends AppCompatActivity {
     ListView areaList;
     EditText areainput;
 
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //user의 정보를 사용할것임
+    //FirebaseStorage storage = FirebaseStorage.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +42,8 @@ public class ownCreateCamping extends AppCompatActivity {
         areainput = findViewById(R.id.area_input);
         areaList = findViewById(R.id.area_list);
         findViewById(R.id.area_add_btn).setOnClickListener(onClickListener);
+        findViewById(R.id.plus_image).setOnClickListener(onClickListener);
+        findViewById(R.id.add_camp).setOnClickListener(onClickListener);
     }
     public void onStart() {
         super.onStart();
@@ -45,10 +58,51 @@ public class ownCreateCamping extends AppCompatActivity {
                 case R.id.area_add_btn:
                     addArea();
                     break;
+                case R.id.plus_image:
+                    plus_image();
+                    break;
+                case R.id.add_camp:
+                    upload_camp();
 
             }
         }
     };
+    private void upload_camp()
+    {
+        String userUid = user.getUid(); //유저 UID 가져오기
+        String campname = ((EditText) findViewById(R.id.camp_name)).getText().toString();
+        String campinfo = ((EditText) findViewById(R.id.camp_info)).getText().toString();
+
+        final Map<String, String> post = new HashMap<>();
+        post.put("name", campname);
+        post.put("info", campinfo);
+        DocumentReference campDoc = db.collection("Camp").document(user.getUid()).collection("privateCamp").document();
+        final String myId = campDoc.getId();
+
+        DocumentReference postDoc1 = db.collection("Camp").document(user.getUid()).collection("totalCamp").document(myId);
+        postDoc1.set(post, SetOptions.merge());
+        DocumentReference postDoc = db.collection("Camp").document(user.getUid()).collection("privateCamp").document(myId);
+        postDoc.set(post, SetOptions.merge());
+
+        while(!area.empty())
+        {
+            Map<Integer, String> Area = new HashMap<>();
+            //Area.put(i, area.peek());
+            DocumentReference postArea = db.collection("Camp").document(user.getUid()).collection("privateCamp").document(myId).collection("Area").document(area.peek());
+            postArea.set(post, SetOptions.merge());
+            area.pop();
+            campDoc.set(Area);
+        }
+        //startToast("캠핑 생성 완료");
+
+    }
+    private void plus_image() //사진 넣기
+    {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "이미지를 선택하세요."), 0);
+    }
     private void addArea(){
         if(areainput.length()>=1) //넣을 구역 이름을 입력했다면
         {
