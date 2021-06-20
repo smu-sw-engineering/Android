@@ -15,15 +15,12 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DetailsAdapter extends BaseAdapter {
-
-    Context mContext = null;
-    LayoutInflater mLayoutInflater = null;
-    ArrayList<MessageRoomData> sample;
     ArrayList<MessageItem> messageItems;
+    LayoutInflater layoutInflater;
 
     public DetailsAdapter(ArrayList<MessageItem> messageItems, LayoutInflater layoutInflater) {
-        messageItems = this.messageItems;
-        mLayoutInflater = layoutInflater;
+        this.messageItems = messageItems;
+        this.layoutInflater = layoutInflater;
     }
 
     @Override
@@ -44,32 +41,30 @@ public class DetailsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
 
-        // 현재 보여줄 position의 데이터로 뷰를 생성
+        //현재 보여줄 번째의(position)의 데이터로 뷰를 생성
         MessageItem item=messageItems.get(position);
 
-        // 재활용할 뷰는 사용하지 않음
+        //재활용할 뷰는 사용하지 않음!!
         View itemView=null;
 
-        //메시지 종류 확인
+        //메세지가 내 메세지인지??
         if(item.getName().equals("김상명")){
-            itemView = mLayoutInflater.inflate(R.layout.com_my_msgbox, viewGroup, false);
+            itemView= layoutInflater.inflate(R.layout.com_my_msgbox,viewGroup,false);
         }else{
-            itemView = mLayoutInflater.inflate(R.layout.com_other_msgbox, viewGroup, false);
+            itemView= layoutInflater.inflate(R.layout.com_other_msgbox,viewGroup,false);
         }
 
-        //아이템 뷰에 들어갈 값 설정
-        CircleImageView iv = itemView.findViewById(R.id.iv);
-        TextView tvName = itemView.findViewById(R.id.tv_name);
-        TextView tvMsg = itemView.findViewById(R.id.tv_msg);
-        TextView tvTime = itemView.findViewById(R.id.tv_time);
+        //만들어진 itemView에 값들 설정
+//        CircleImageView iv= itemView.findViewById(R.id.iv);
+        TextView tvName= itemView.findViewById(R.id.tv_name);
+        TextView tvMsg= itemView.findViewById(R.id.tv_msg);
+        TextView tvTime= itemView.findViewById(R.id.tv_time);
 
         tvName.setText(item.getName());
         tvMsg.setText(item.getMessage());
         tvTime.setText(item.getTime());
 
-        // 프로필 사진 설정
 //        Glide.with(itemView).load(item.getPofileUrl()).into(iv);
-//        iv.setImageResource(sample.get(position).PofileUrl());
 
         return itemView;
     }
