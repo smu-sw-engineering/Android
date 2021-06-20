@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sw_engineering.R;
+import com.example.sw_engineering.common.ComSetting;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -81,8 +82,7 @@ public class ownCreateCamping extends AppCompatActivity {
 
         DocumentReference postDoc1 = db.collection("Camp").document(user.getUid()).collection("totalCamp").document(myId);
         postDoc1.set(post, SetOptions.merge());
-        DocumentReference postDoc = db.collection("Camp").document(user.getUid()).collection("privateCamp").document(myId);
-        postDoc.set(post, SetOptions.merge());
+
 
         while(!area.empty())
         {
@@ -93,8 +93,15 @@ public class ownCreateCamping extends AppCompatActivity {
             area.pop();
             campDoc.set(Area);
         }
-        //startToast("캠핑 생성 완료");
+        DocumentReference postDoc = db.collection("Camp").document(user.getUid()).collection("privateCamp").document(myId);
+        postDoc.set(post, SetOptions.merge());
+        startToast("캠핑 생성 완료");
+        startOwnHome();
 
+    }
+    public void startOwnHome(){
+        Intent intent = new Intent(ownCreateCamping.this, ownHome.class);
+        startActivity(intent);
     }
     private void plus_image() //사진 넣기
     {
