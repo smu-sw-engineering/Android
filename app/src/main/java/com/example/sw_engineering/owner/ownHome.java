@@ -2,9 +2,11 @@ package com.example.sw_engineering.owner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,6 +29,7 @@ public class ownHome extends AppCompatActivity {
         //findViewById(R.id.setting).setOnClickListener(onClickListener);
         adapter = new ownHomeListViewAdapter();
         listview = (ListView) findViewById(R.id.listview);
+        findViewById(R.id.plus_btn).setOnClickListener(onClickListener);
         listview.setAdapter(adapter);
 
         adapter.addItem("상명캠핑장", "서울시", "010-****");
@@ -53,6 +56,8 @@ public class ownHome extends AppCompatActivity {
                 case R.id.setting:
                     startComSetting();
                     break;
+                case R.id.plus_btn:
+                    startCreatCamping();
             }
         }
     };
@@ -69,4 +74,8 @@ public class ownHome extends AppCompatActivity {
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 
+    public void startCreatCamping(){
+        Intent intent = new Intent(ownHome.this, ownCreateCamping.class);
+        startActivity(intent);
+    }
 }
