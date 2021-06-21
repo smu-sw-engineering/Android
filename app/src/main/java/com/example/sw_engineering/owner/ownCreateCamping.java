@@ -77,10 +77,10 @@ public class ownCreateCamping extends AppCompatActivity {
         final Map<String, String> post = new HashMap<>();
         post.put("name", campname);
         post.put("info", campinfo);
-
+        post.put("owner",user.getUid());
         DocumentReference campDoc = db.collection("Camp").document("privateCamp").collection(user.getUid()).document();
         final String myId = campDoc.getId();
-        DocumentReference postDoc1 = db.collection("Camp").document("totalCamp").collection(myId).document(user.getUid());
+        DocumentReference postDoc1 = db.collection("Camp").document("totalCamp").collection("totalCamp").document(myId);
         postDoc1.set(post, SetOptions.merge());
 
 
