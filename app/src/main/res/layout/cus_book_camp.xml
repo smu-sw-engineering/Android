@@ -41,11 +41,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id = "@+id/in_month"
                         android:entries="@array/month"></Spinner>
                     <Spinner
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id = "@+id/in_day"
                         android:entries="@array/day"></Spinner>
                 </LinearLayout>
 
@@ -71,11 +73,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id = "@+id/out_month"
                         android:entries="@array/month"></Spinner>
                     <Spinner
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id = "@+id/out_day"
                         android:entries="@array/day"></Spinner>
                 </LinearLayout>
 
@@ -103,12 +107,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text = "인원 선택"
+
                     android:layout_marginLeft="30dp"
                     android:textSize="17dp"></TextView>
                 <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/member"
+                    android:id = "@+id/member"
                     android:layout_marginLeft="30dp"/>
 
             </LinearLayout>
@@ -129,6 +135,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/area"
+                    android:id = "@+id/area"
                     android:layout_marginRight="30dp"/>
             </LinearLayout>
         </LinearLayout>
@@ -143,6 +150,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint = "내용을 입력해주세요."
+            android:id = "@+id/request"
             android:layout_margin="10dp"
             ></EditText>
 
