@@ -96,9 +96,10 @@ public class cusSearch extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String campid = ((cusSearchListViewItem)adapter.getItem(position)).getCamp();
-                startToast(campid);
+                //startToast(campid);
                 Intent oIntent = new Intent(cusSearch.this, cusCampDetail.class);
                 oIntent.putExtra("camp", campid);
+
                 //추가 넘겨줄 것은 여기아래다 추가해주면 됨
                 startActivity(oIntent);
             }

@@ -18,7 +18,7 @@
             android:focusable="auto"
             android:gravity="center"
             android:rotationX="-2"
-            android:text="상명 캠핑장"
+            android:id = "@+id/name"
             android:textAllCaps="true"
             android:textSize="25dp"
             android:textStyle="bold"></TextView>
@@ -45,13 +45,20 @@
                 android:text="상명 캠핑장\n서울 특별시 종로구 홍지동 홍지문 2길 28"
                 android:textSize="17dp"
                 android:layout_marginLeft="10dp"></TextView>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="10dp"
-                android:text="캠핑장 정보\n캠핑장 정보"
+                android:text="캠핑장 정보"
+                android:textSize="17dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:id = "@+id/info"
+                android:text="캠핑장 정보"
                 android:textSize="17dp"></TextView>
 
             <TextView
