@@ -41,10 +41,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id = "@+id/enter_month"
                         android:entries="@array/month"></Spinner>
                     <Spinner
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id = "@+id/enter_day"
                         android:layout_weight="1"
                         android:entries="@array/day"></Spinner>
                 </LinearLayout>
@@ -70,12 +72,14 @@
                     <Spinner
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id = "@+id/exit_month"
                         android:layout_weight="1"
                         android:entries="@array/month"></Spinner>
                     <Spinner
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id = "@+id/exit_day"
                         android:entries="@array/day"></Spinner>
                 </LinearLayout>
 
@@ -141,18 +145,21 @@
                 android:layout_height="wrap_content"
                 android:hint = "내용을 입력하세요."
                 android:textSize="15dp"
+                android:id = "@+id/name"
                 android:layout_weight="1"/>
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id = "@+id/people"
                 android:entries="@array/member" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/area"
+                android:id = "@+id/zone"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -207,6 +214,7 @@
             android:layout_height="wrap_content"
             android:text="예약 마감"
             android:textSize="17dp"
+            android:id = "@+id/book"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"/>
