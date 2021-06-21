@@ -37,8 +37,10 @@ public class cusHome extends AppCompatActivity {
                     break;
                 case R.id.chatting:
                     startComMessageRoomList();
+                    break;
                 case R.id.setting:
                     startComSetting();
+                    break;
             }
         }
     };

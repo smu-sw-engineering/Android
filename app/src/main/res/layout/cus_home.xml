@@ -11,19 +11,79 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_weight="1">
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="30dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="날씨"
-                    android:textSize="17dp"
-                    android:layout_marginTop="30dp"
-                    />
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="날씨"
+                        android:textSize="17dp"
+                        android:layout_marginTop="30dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp"
+                        android:src="@drawable/weather">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="관련 뉴스"
+                        android:textSize="17dp"
+                        android:layout_marginTop="30dp"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp"
+                        android:src="@drawable/news">
+
+                    </ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="안 그래도 캠핑장 예약 힘든데…곳곳에 '텐트 알박기'"
+                        android:textSize="15dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="코로나19가 길어지면서 야외에서 즐길 수 있는 캠핑이 인기를 끌다 보니까 요즘 주말 캠핑장 예약 하기가 쉽지 않습니다.
+                        \n이 때문에 시민들이 무료로 이용할 수 있게 지자체 등이 내놓은 캠핑장도 있는데요.
+                        \n문제는 이런 캠핑장에 텐트를 쳐놓고 마치 자기 땅인 양 몇 날 며칠을 걷어 가지 않는, 이른바 '텐트 알박기'가 극성이라고 합니다.\n..."
+                        android:textSize="10dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="공지사항"
+                        android:textSize="17dp"
+                        android:layout_marginTop="30dp"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/notice">
+
+                    </ImageView>
+
+                </LinearLayout>
 
             </ScrollView>
         </LinearLayout>
