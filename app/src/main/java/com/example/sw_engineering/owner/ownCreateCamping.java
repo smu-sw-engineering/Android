@@ -88,12 +88,12 @@ public class ownCreateCamping extends AppCompatActivity {
         {
             Map<Integer, String> Area = new HashMap<>();
             //Area.put(i, area.peek());
-            DocumentReference postArea = db.collection("Camp").document(user.getUid()).collection("privateCamp").document(myId).collection("Area").document(area.peek());
+            DocumentReference postArea = db.collection("Camp").document("privateCamp").collection(user.getUid()).document(myId).collection("Area").document(area.peek());
             postArea.set(post, SetOptions.merge());
             area.pop();
             campDoc.set(Area);
         }
-        DocumentReference postDoc = db.collection("Camp").document(user.getUid()).collection("privateCamp").document(myId);
+        DocumentReference postDoc = db.collection("Camp").document("privateCamp").collection(user.getUid()).document(myId);
         postDoc.set(post, SetOptions.merge());
         startToast("캠핑 생성 완료");
         startOwnHome();
