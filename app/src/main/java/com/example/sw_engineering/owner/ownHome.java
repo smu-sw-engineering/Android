@@ -96,8 +96,12 @@ public class ownHome extends AppCompatActivity {
                 String campid = selection.get("camp");
                 Intent oIntent = new Intent(ownHome.this, cusCampDetail.class);
                 oIntent.putExtra("camp",campid);
+                Intent intent1 = new Intent(ownHome.this, ownCampEdit.class);
+                intent1.putExtra("camp", campid);
                 //추가 넘겨줄 것은 여기아래다 추가해주면 됨
                 startActivity(oIntent);
+                startActivity(intent1);
+
             }
         });
 
