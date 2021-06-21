@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.sw_engineering.R;
+import com.example.sw_engineering.common.ComSetting;
 import com.example.sw_engineering.owner.ownCreateCamping;
 import com.example.sw_engineering.owner.ownHome;
 import com.example.sw_engineering.common.ComMessageRoomList;
@@ -36,6 +37,8 @@ public class cusHome extends AppCompatActivity {
                     break;
                 case R.id.chatting:
                     startComMessageRoomList();
+                case R.id.setting:
+                    startComSetting();
             }
         }
     };
@@ -53,6 +56,11 @@ public class cusHome extends AppCompatActivity {
     private void startComMessageRoomList()
     {
         Intent intent = new Intent(cusHome.this, ComMessageRoomList.class);
+        startActivity(intent);
+    }
+    private void startComSetting()
+    {
+        Intent intent = new Intent(cusHome.this, ComSetting.class);
         startActivity(intent);
     }
 }
