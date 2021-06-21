@@ -61,7 +61,7 @@ public class ownHome extends AppCompatActivity {
             }
         });
 
-        db.collection("Camp").document(user.getUid()).collection("privateCamp")
+        db.collection("Camp").document("privateCamp").collection(user.getUid())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -69,7 +69,7 @@ public class ownHome extends AppCompatActivity {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             String campid = document.getId();
                             //startToast(campid);
-                            DocumentReference docRef = db.collection("Camp").document(user.getUid()).collection("privateCamp").document(campid);
+                            DocumentReference docRef = db.collection("Camp").document("privateCamp").collection(user.getUid()).document(campid);
 
                             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
