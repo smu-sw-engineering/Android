@@ -72,7 +72,10 @@ public class DetailsAdapter extends BaseAdapter {
         //메세지가 내 메세지인지??
         if(item.getName().equals(username)){
             itemView= layoutInflater.inflate(R.layout.com_my_msgbox,viewGroup,false);
-        }else{
+        }else if(item.getName().equals("시스템")){
+            itemView= layoutInflater.inflate(R.layout.com_system_msgbox,viewGroup,false);
+        }
+        else{
             itemView= layoutInflater.inflate(R.layout.com_other_msgbox,viewGroup,false);
         }
 

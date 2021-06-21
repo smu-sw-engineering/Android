@@ -66,9 +66,6 @@ public class ComMessageDetails extends AppCompatActivity {
         });
 
 
-
-
-
         initMsgData();
 
         et=findViewById(R.id.et);
