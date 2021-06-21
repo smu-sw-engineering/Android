@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.sw_engineering.R;
+import com.example.sw_engineering.common.ComMessageRoomList;
 import com.example.sw_engineering.common.ComSetting;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -50,6 +51,7 @@ public class ownHome extends AppCompatActivity {
         listview = (ListView) findViewById(R.id.listview);
         findViewById(R.id.plus_btn).setOnClickListener(onClickListener);
         listview.setAdapter(adapter);
+        findViewById(R.id.send).setOnClickListener(onClickListener);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //user의 정보를 사용할것임
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -123,6 +125,10 @@ public class ownHome extends AppCompatActivity {
                     break;
                 case R.id.plus_btn:
                     startCreatCamping();
+                    break;
+                case R.id.send:
+                    startMessageRoomList();
+                    break;
             }
         }
     };
@@ -141,6 +147,10 @@ public class ownHome extends AppCompatActivity {
 
     public void startCreatCamping(){
         Intent intent = new Intent(ownHome.this, ownCreateCamping.class);
+        startActivity(intent);
+    }
+    public void startMessageRoomList(){
+        Intent intent = new Intent(ownHome.this, ComMessageRoomList.class);
         startActivity(intent);
     }
 
