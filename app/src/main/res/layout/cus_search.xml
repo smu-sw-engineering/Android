@@ -74,9 +74,6 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/search"></Spinner>
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -93,7 +90,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
                             android:padding="0dp"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="20dp"
                             android:text="서울" />
 
                         <Button
@@ -131,22 +128,17 @@
                             android:layout_height="wrap_content"
                             android:text="제주" />
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/border_layout"
-                        android:orientation="vertical">
-                        <ListView
-                            android:layout_width="wrap_content"
+
+                    <ListView
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:id= "@+id/totalcamp">
 
-                        </ListView>
-                    </LinearLayout>
+                    </ListView>
+
 
                 </LinearLayout>
-            </ScrollView>
-
 
 
 
