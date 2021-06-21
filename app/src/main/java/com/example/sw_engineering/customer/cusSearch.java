@@ -87,34 +87,26 @@ public class cusSearch extends AppCompatActivity {
 
 
 
-
-
                         }
                     }
                 });
 
+        campList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String campid = ((cusSearchListViewItem)adapter.getItem(position)).getCamp();
+                startToast(campid);
+                Intent oIntent = new Intent(cusSearch.this, cusCampDetail.class);
+                oIntent.putExtra("camp", campid);
+                //추가 넘겨줄 것은 여기아래다 추가해주면 됨
+                startActivity(oIntent);
+            }
+        });
 
 
-    /*    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //user의 정보를 사용할것임
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("Camp").document("totalCamp")
-                    .get().addOnCompleteListener()
 
 
-
-            listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Map<String, String> selection = (Map<String, String>) parent.getItemAtPosition(position);
-                    String campid = selection.get("camp");
-                    Intent oIntent = new Intent(ownHome.this, cusCampDetail.class);
-                    oIntent.putExtra("camp", campid);
-                    //추가 넘겨줄 것은 여기아래다 추가해주면 됨
-                    startActivity(oIntent);
-                }
-            });
-        }*/
     }
 
         public void navbar () {
