@@ -34,7 +34,6 @@ import java.util.Map;
 
 
 public class ownHome extends AppCompatActivity {
-    private Button update_button, plus_button;
     private FirebaseAuth mAuth;
     private ListView listview;
     private ownHomeListViewAdapter adapter;
@@ -50,8 +49,10 @@ public class ownHome extends AppCompatActivity {
         adapter = new ownHomeListViewAdapter();
         listview = (ListView) findViewById(R.id.listview);
         findViewById(R.id.plus_btn).setOnClickListener(onClickListener);
-        listview.setAdapter(adapter);
         findViewById(R.id.send).setOnClickListener(onClickListener);
+        findViewById(R.id.setting_btn).setOnClickListener(onClickListener);
+        listview.setAdapter(adapter);
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //user의 정보를 사용할것임
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -120,7 +121,7 @@ public class ownHome extends AppCompatActivity {
                 //case R.id.plus:
                   //  startownCreateCamping();
                     //break;
-                case R.id.setting:
+                case R.id.setting_btn:
                     startComSetting();
                     break;
                 case R.id.plus_btn:
