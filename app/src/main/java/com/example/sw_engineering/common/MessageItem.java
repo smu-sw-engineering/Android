@@ -5,13 +5,13 @@ public class MessageItem {
     String name;
     String message;
     String time;
-    String pofileUrl;
+    int pofileImage;
 
-    public MessageItem(String name, String message, String time, String pofileUrl) {
+    public MessageItem(String name, String message, String time, int pofileImage) {
         this.name = name;
         this.message = message;
         this.time = time;
-        this.pofileUrl = pofileUrl;
+        this.pofileImage = pofileImage;
     }
 
     //firebase DB에 객체로 값을 읽어올 때..
@@ -44,11 +44,11 @@ public class MessageItem {
         this.time = time;
     }
 
-    public String getPofileUrl() {
-        return pofileUrl;
+    public int getProfileImage() {
+        return pofileImage;
     }
 
-    public void setPofileUrl(String pofileUrl) {
-        this.pofileUrl = pofileUrl;
+    public void setProfileImage(int profileImage) {
+        this.pofileImage = profileImage;
     }
 }

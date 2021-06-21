@@ -13,16 +13,24 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.sw_engineering.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ComMessageDetails extends AppCompatActivity {
+
+    String username;
 
     EditText et;
     ListView lv;
@@ -41,8 +49,25 @@ public class ComMessageDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_com_message_details);
 
-        // 채팅방 제목
-        getSupportActionBar().setTitle("김상명");
+        // 닉네임 가져오기
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //user의 정보를 사용할것임
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("UserInfo").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                username = document.getString("username");
+
+                // 채팅방 제목
+                String title = username.equals("상명캠핑장") ? "최수뭉" : "상명캠핑장";
+                getSupportActionBar().setTitle(title);
+            }
+        });
+
+
+
+
 
         initMsgData();
 
@@ -98,33 +123,29 @@ public class ComMessageDetails extends AppCompatActivity {
     }
 
     private void initMsgData(){
-        messageItems.add(new MessageItem("김상명",
-                "안녕하세요 고객입니다",
+        messageItems.add(new MessageItem("상명캠핑장",
+                "안녕하세요 상명캠핑장입니다",
                 "17:06",
-                "profile-img-url"));
-
-        messageItems.add(new MessageItem("상명캠핑장주인",
-                "안녕하세요 주인입니다",
-                "17:11",
-                "profile-img-url"));
+                R.drawable.sangmyung_camp));
     }
 
     public void clickSend(View view) {
 
         //firebase DB에 저장할 값들( 닉네임, 메세지, 프로필 이미지URL, 시간)
-        String nickName= "김상명";
+        String nickName= username;
         String message= et.getText().toString();
-        String pofileUrl= "porfileUrl";
+        int pofileImage= (username.equals("상명캠핑장")) ? R.drawable.sangmyung_camp : R.drawable.profile_smchoi;
+        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
 
         //메세지 작성 시간 문자열로..
         Calendar calendar= Calendar.getInstance(); //현재 시간을 가지고 있는 객체
         String time=calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE); //14:16
 
         //firebase DB에 저장할 값(MessageItem객체) 설정
-        MessageItem messageItem= new MessageItem(nickName,message,time,pofileUrl);
+        MessageItem messageItem= new MessageItem(nickName,message,time,pofileImage);
         //'char'노드에 MessageItem객체를 통해
         chatRef.push().setValue(messageItem);
-        Toast.makeText(this, "DB 저장 완료", Toast.LENGTH_SHORT).show();
+
 
         //EditText에 있는 글씨 지우기
         et.setText("");

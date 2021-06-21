@@ -9,12 +9,22 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.sw_engineering.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DetailsAdapter extends BaseAdapter {
+
+    String username;
+
     ArrayList<MessageItem> messageItems;
     LayoutInflater layoutInflater;
 
@@ -41,6 +51,18 @@ public class DetailsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
 
+        // 현재 username 가져오기
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //user의 정보를 사용할것임
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("UserInfo").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                username = document.getString("username");
+            }
+        });
+
         //현재 보여줄 번째의(position)의 데이터로 뷰를 생성
         MessageItem item=messageItems.get(position);
 
@@ -48,18 +70,19 @@ public class DetailsAdapter extends BaseAdapter {
         View itemView=null;
 
         //메세지가 내 메세지인지??
-        if(item.getName().equals("김상명")){
+        if(item.getName().equals(username)){
             itemView= layoutInflater.inflate(R.layout.com_my_msgbox,viewGroup,false);
         }else{
             itemView= layoutInflater.inflate(R.layout.com_other_msgbox,viewGroup,false);
         }
 
         //만들어진 itemView에 값들 설정
-//        CircleImageView iv= itemView.findViewById(R.id.iv);
+        CircleImageView iv= itemView.findViewById(R.id.iv);
         TextView tvName= itemView.findViewById(R.id.tv_name);
         TextView tvMsg= itemView.findViewById(R.id.tv_msg);
         TextView tvTime= itemView.findViewById(R.id.tv_time);
 
+        iv.setImageResource(item.getProfileImage());
         tvName.setText(item.getName());
         tvMsg.setText(item.getMessage());
         tvTime.setText(item.getTime());
