@@ -25,6 +25,7 @@ public class ComMessageRoomList extends AppCompatActivity {
 
     String username;
 
+    ListView listView;
     ArrayList<MessageRoomData> messageRoomData;
 
     @Override
@@ -32,26 +33,9 @@ public class ComMessageRoomList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_com_message_room_list);
 
-        // 현재 username 가져오기
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //user의 정보를 사용할것임
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("UserInfo").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document = task.getResult();
-                username = document.getString("username");
-            }
-        });
-
-
-
         this.InitializeMovieData();
 
-        ListView listView = (ListView)findViewById(R.id.list_view);
-        final MessageRoomAdapater messageRoomAdapater = new MessageRoomAdapater(this,messageRoomData);
-
-        listView.setAdapter(messageRoomAdapater);
+        listView = (ListView)findViewById(R.id.list_view);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -71,39 +55,45 @@ public class ComMessageRoomList extends AppCompatActivity {
     {
         messageRoomData = new ArrayList<MessageRoomData>();
 
-        messageRoomData.add(new MessageRoomData(
-                    R.drawable.sangmyung_camp,
-                    "상명캠핑장",
-                    "6월3일 16:14",
-                    "예약 승인 해드렸습니다!"
-            ));
-            messageRoomData.add(new MessageRoomData(
-                    R.drawable.smu_camp,
-                    "스뮤캠핑장",
-                    "6월3일 13:25",
-                    "언제로 예약 변경해드릴까요?"
-            ));
+        // 닉네임 가져오기
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //user의 정보를 사용할것임
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-//        if(username.equals("최수뭉")){
-//            messageRoomData.add(new MessageRoomData(
-//                    R.drawable.sangmyung_camp,
-//                    "상명캠핑장",
-//                    "6월3일 16:14",
-//                    "예약 승인 해드렸습니다!"
-//            ));
-//            messageRoomData.add(new MessageRoomData(
-//                    R.drawable.smu_camp,
-//                    "스뮤캠핑장",
-//                    "6월3일 13:25",
-//                    "언제로 예약 변경해드릴까요?"
-//            ));
-//        }else if(username.equals("상명캠핑장")){
-//            messageRoomData.add(new MessageRoomData(
-//                    R.drawable.profile_smchoi,
-//                    "최수뭉",
-//                    "6월3일 16:14",
-//                    "6월 13일에 A구역 예약 신청했습니다."
-//            ));
-//        }
+        db.collection("UserInfo").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                username = document.getString("username");
+
+                if(username.equals("최수뭉")){
+                    messageRoomData.add(new MessageRoomData(
+                            R.drawable.sangmyung_camp,
+                            "상명캠핑장",
+                            "6월3일 16:14",
+                            "예약 승인 해드렸습니다!"
+                    ));
+                    messageRoomData.add(new MessageRoomData(
+                            R.drawable.smu_camp,
+                            "스뮤캠핑장",
+                            "6월3일 13:25",
+                            "언제로 예약 변경해드릴까요?"
+                    ));
+                }else{
+                    messageRoomData.add(new MessageRoomData(
+                            R.drawable.profile_smchoi,
+                            "최수뭉",
+                            "6월3일 16:14",
+                            "6월 13일에 A구역 예약 신청했습니다."
+                    ));
+                }
+                Toast.makeText(ComMessageRoomList.this,  messageRoomData.get(0).getsender(), Toast.LENGTH_SHORT).show();
+
+                final MessageRoomAdapater messageRoomAdapater = new MessageRoomAdapater(ComMessageRoomList.this,messageRoomData);
+                listView.setAdapter(messageRoomAdapater);
+            }
+        });
+
+
+
     }
 }
