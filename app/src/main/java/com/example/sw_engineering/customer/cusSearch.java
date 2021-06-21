@@ -37,7 +37,8 @@ public class cusSearch extends AppCompatActivity {
     ImageButton home1, menu, reserve, chatting, setting;
     ListView campList;
     private cusSearchListViewAdapter adapter;
-    String name, campid, tel, ownerid;
+    //String name, campid, tel, ownerid;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,25 +58,25 @@ public class cusSearch extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            campid = document.getId();
+                            String campid = document.getId();
                             DocumentReference docRef = db.collection("Camp").document("totalCamp").collection("totalCamp").document(campid);
 
                             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                     DocumentSnapshot document = task.getResult();
-                                    name = document.getString("name");
-                                    ownerid = document.getString("owner");
+                                    String name = document.getString("name");
+                                    String ownerid = document.getString("owner");
 
                                     DocumentReference docRef1 = db.collection("UserInfo").document(ownerid);
                                     docRef1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                             DocumentSnapshot document = task.getResult();
-                                            tel = document.getString("tel");
-
+                                            String tel = document.getString("tel");
                                             //여기다 지역정보랑 얻어오면 됨
                                             adapter.addItem(name, "서울시", tel, campid);
+
                                             adapter.notifyDataSetChanged();
 
                                         }
